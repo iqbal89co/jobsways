@@ -1,6 +1,9 @@
 class JobsController < ApplicationController
   def index
     @jobs = Job.get_all_jobs
+    if params[:s]
+      @jobs = Job.search_job(params[:s])
+    end
     render :json => @jobs
   end
 
@@ -19,7 +22,9 @@ class JobsController < ApplicationController
     @job.update(job_params)
   end
 
-  def delete
+  def destroy
+    @job = Job.get_job(params[:id])
+    @job.destroy
   end
 
   private

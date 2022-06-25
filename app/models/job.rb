@@ -20,6 +20,11 @@ class Job < ApplicationRecord
         @job = Job.find_by(id: id)
         @job
     end
+
+    def self.search_job(key)
+        @job = Job.where('title LIKE :search OR position LIKE :search OR description LIKE :search', search: "%#{key}%")
+        @job
+    end
     
     before_save :default_values
     def default_values
