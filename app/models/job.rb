@@ -1,4 +1,5 @@
 class Job < ApplicationRecord
+    belongs_to :company_datum
     validates :title, presence: true
     validates :position, presence: true
     validates :salary, presence: true

@@ -10,8 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_25_080506) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_25_104149) do
+  create_table "company_data", force: :cascade do |t|
+    t.string "name"
+    t.text "desc"
+    t.string "location"
+    t.string "email"
+    t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "jobs", force: :cascade do |t|
+    t.integer "company_datum_id"
     t.string "title"
     t.string "position"
     t.float "salary"
@@ -22,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_080506) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_datum_id"], name: "index_jobs_on_company_datum_id"
   end
 
   create_table "user_data", force: :cascade do |t|
@@ -34,4 +46,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_080506) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "jobs", "company_data"
 end
