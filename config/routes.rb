@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   resources :users, param: :_username
   post '/auth/login', to: 'authentication#login'
-  get '/*a', to: 'application#not_found'
 
   # Defines the root path route ("/")
   # root "articles#index"
@@ -19,4 +18,6 @@ Rails.application.routes.draw do
   post '/jobs', to: 'jobs#create'
   patch '/jobs/:id', to: 'jobs#update'
   delete '/jobs/:id', to: 'jobs#destroy'
+  
+  get '/*a', to: 'application#not_found'
 end

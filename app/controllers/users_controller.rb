@@ -17,7 +17,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user, status: :created
+      @user_datum = UserDatum.new(:user_id => @user.id, :name => params[:name], :status => "unemployed")
+      if @user_datum.save
+        render json: @user_datum, status: :created
+      else
+        @user.destroy
+        render json: { errors: @user.errors.full_messages },
+             status: :unprocessable_entity
+      end
     else
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
@@ -47,7 +54,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(
-      :avatar, :name, :username, :email, :password, :password_confirmation
+      :username, :email, :password, :password_confirmation
     )
   end
 end

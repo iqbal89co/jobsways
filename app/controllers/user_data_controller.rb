@@ -1,12 +1,10 @@
 class UserDataController < ApplicationController
+  before_action :authorize_request, except: :create
+  before_action :find_user, except: %i[create index]
+
   def show
     @user_datum = UserDatum.get_user_datum(params[:id])
     render :json => @user_datum
-  end
-  
-  def create
-    @user_datum = UserDatum.new(user_datum_params)
-    @user_datum.save
   end
 
   def update

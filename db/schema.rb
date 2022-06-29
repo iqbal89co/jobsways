@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_071815) do
   end
 
   create_table "user_data", force: :cascade do |t|
+    t.integer "user_id"
     t.string "name"
     t.string "location"
     t.string "contact"
@@ -48,7 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_071815) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "username"
     t.string "email"
     t.string "password_digest"
