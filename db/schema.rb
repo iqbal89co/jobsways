@@ -13,9 +13,8 @@
 ActiveRecord::Schema[7.0].define(version: 2022_06_25_104149) do
   create_table "company_data", force: :cascade do |t|
     t.string "name"
-    t.text "desc"
+    t.text "description"
     t.string "location"
-    t.string "email"
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -42,6 +41,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_104149) do
     t.string "contact"
     t.date "birth_date"
     t.string "nationality"
+    t.string "resume"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

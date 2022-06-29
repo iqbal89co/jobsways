@@ -2,7 +2,9 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.get_all_jobs
     if params[:s]
-      @jobs = Job.search_job(params[:s])
+      @jobs = @jobs.search_job(params[:s])
+    elsif params[:job_type]
+      @jobs = @jobs.filter_by_type(params[:job_type])
     end
     render :json => @jobs
   end

@@ -4,7 +4,6 @@ class CreateCompanyData < ActiveRecord::Migration[7.0]
       t.string :name
       t.text :description
       t.string :location
-      t.string :email
       t.string :website
 
       t.timestamps

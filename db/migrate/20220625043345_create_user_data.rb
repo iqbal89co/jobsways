@@ -6,6 +6,8 @@ class CreateUserData < ActiveRecord::Migration[7.0]
       t.string :contact
       t.date :birth_date
       t.string :nationality
+      t.string :resume
+      t.string :status
 
       t.timestamps
     end
