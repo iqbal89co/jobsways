@@ -1,5 +1,7 @@
 class UserDatum < ApplicationRecord
     belongs_to :user
+    mount_uploader :resume, ResumeUploader
+
     validates :name, presence: true
     validates :status, presence: true, 
         inclusion: { in: %w(employed unemployed),
@@ -14,9 +16,8 @@ class UserDatum < ApplicationRecord
         @user_datum = self.where(["job_type = :type", {type: type}])
         @user_datum
     end
-
-    before_save :default_values
-    def default_values
-        self.status ||= 'unemployed'
+    
+    def get_resume_url
+        url_for(self.resume)
     end
 end

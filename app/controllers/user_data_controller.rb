@@ -12,13 +12,8 @@ class UserDataController < ApplicationController
     end
   end
 
-  def update_status
-    if @user_datum.update(user_status_params)
-      render :json => @user_datum
-    end
-  end
-
-  def update_resume
+  def show_resume
+    send_file("#{Rails.root}/public/#{@user_datum.resume.url}")
   end
 
   private
@@ -30,10 +25,6 @@ class UserDataController < ApplicationController
   end
 
   def user_datum_params
-    params.permit(:name, :location, :contact, :birth_date, :nationality)
-  end
-
-  def user_status_params
-    params.permit(:status)
+    params.permit(:name, :location, :contact, :birth_date, :nationality, :status, :resume)
   end
 end
