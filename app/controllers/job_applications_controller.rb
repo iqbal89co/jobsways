@@ -2,7 +2,13 @@ class JobApplicationsController < ApplicationController
 
   
   def index
-    @job_applications = JobApplication.all
+    if params[:user]
+      @job_applications = @job_applications.search_job_application_by_user(params[:user])
+    elsif params[:job]
+      @job_applications = @job_applications.search_job_application_by_job(params[:job])
+    else
+      @job_applications = JobApplication.all
+    end
     render :json => @job_applications
   end
 
@@ -60,5 +66,12 @@ class JobApplicationsController < ApplicationController
 
     def job_application_params
       params.require(:job_application).permit(:user_id, :job_id, :status)
+    end
+
+    def search_job_application_by_job(id)
+      @job_application = JobApplication.where(job_id: id)
+    end
+    def search_job_application_by_user(id)
+      @job_application = JobApplication.where(user_datum_id: id)
     end
 end

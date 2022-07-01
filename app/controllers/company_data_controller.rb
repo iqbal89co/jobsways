@@ -1,5 +1,4 @@
 class CompanyDataController < ApplicationController
-  before_action :authorize_request, except: :create
 
   def index
     @company_data = CompanyDatum.all
@@ -58,6 +57,6 @@ class CompanyDataController < ApplicationController
     end
 
     def company_datum_params
-      params.require(:company_datum).permit(:name, :desc, :location, :email, :website)
+      params.require(:company_datum).permit(:name, :description, :total_employee, :email, :location, :website)
     end
 end

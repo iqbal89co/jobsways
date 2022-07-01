@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :job_applications
-  resources :company_data
+  resources :applications, controller: 'job_applications'
+  resources :companies, controller: 'company_data'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/users/profile', to: 'user_data#show'
   # update biodata, update&upload resume, update status
