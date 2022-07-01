@@ -1,17 +1,14 @@
 Rails.application.routes.draw do
   resources :company_data
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # auth token : eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTY1NzQyMDZ9.DROtn0X1QYy6YiNfg-WE_x_8voBNdFPZ1JwzKTMeVww
+  get '/users/profile', to: 'user_data#show'
+  patch '/users/profile', to: 'user_data#update'
+  patch '/users/profile/status', to: 'user_data#update_status'
+  patch '/users/profile/resume', to: 'user_data#update_resume'
 
   resources :users, param: :_username
   post '/auth/login', to: 'authentication#login'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  get '/users/profile/:id', to: 'user_data#show'
-  post '/users/profile', to: 'user_data#create'
-  patch '/users/profile/:id', to: 'user_data#update'
 
   get '/jobs', to: 'jobs#index'
   get '/jobs/:id', to: 'jobs#show'

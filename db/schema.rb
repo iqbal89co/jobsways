@@ -14,6 +14,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_071815) do
   create_table "company_data", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.integer "total_employee"
+    t.string "email"
     t.string "location"
     t.string "website"
     t.datetime "created_at", null: false
@@ -52,6 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_071815) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.integer "is_admin"
+    t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
