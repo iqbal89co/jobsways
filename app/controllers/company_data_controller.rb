@@ -1,4 +1,6 @@
 class CompanyDataController < ApplicationController
+  before_action :authorize_request, except: :create
+
   def index
     @company_data = CompanyDatum.all
     render :json => @company_data

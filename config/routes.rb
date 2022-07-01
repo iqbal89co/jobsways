@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :job_applications
   resources :company_data
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/users/profile', to: 'user_data#show'
