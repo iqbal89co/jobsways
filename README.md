@@ -1,24 +1,8 @@
-# README
+Capstone Project Generasi Gigih 2.0 "Jobsways"
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project was created by :
+Muhammad Iqbal
+Aflah Hilmy
+Muhammad Avtara Khrisna
+Muhammad Fiqri Turham
+Novanda Akhsin Diar Fadly
