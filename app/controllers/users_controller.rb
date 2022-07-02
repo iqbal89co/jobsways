@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user_datum = UserDatum.new(:user_id => @user.id, :name => params[:name], :status => "unemployed")
+      @user_datum = UserDatum.new(:user_id => @user.id, :name => params[:name])
       if @user_datum.save
         render json: @user_datum, status: :created
       else
@@ -41,7 +41,11 @@ class UsersController < ApplicationController
 
   # DELETE /users/{username}
   def destroy
-    @user.destroy
+    @username = @user.username
+    if @user.destroy
+      render json: { message: "successfully delete #{@username}" },
+             status: :ok
+    end
   end
 
   private

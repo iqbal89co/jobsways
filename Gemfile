@@ -50,6 +50,7 @@ gem 'bcrypt', '~> 3.1.7'
 # for uploading file to local
 gem 'carrierwave'
 gem 'cloudinary' 
+gem 'uuid'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -82,5 +83,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'factory_girl_rails'
 end

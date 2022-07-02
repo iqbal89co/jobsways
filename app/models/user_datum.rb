@@ -1,11 +1,16 @@
 class UserDatum < ApplicationRecord
     belongs_to :user
+    after_initialize :init
     mount_uploader :resume, ResumeUploader
 
     validates :name, presence: true
-    validates :status, presence: true, 
+    validates :status, presence: true,
         inclusion: { in: %w(employed unemployed),
         message: "%{value} is not available" }
+
+    def init
+        self.status ||= "unemployed"
+    end
 
     def self.get_user_datum(id)
         @user_datum = self.find_by(id: id)

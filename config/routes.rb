@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  get 'user_company/create'
   resources :company_data
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/users/profile', to: 'user_data#show'
   # update biodata, update&upload resume, update status
   patch '/users/profile', to: 'user_data#update'
   get '/users/profile/downloadCV', to: 'user_data#show_resume'
+
+  get '/users/company', to: 'user_company#show'
+  post '/users/company', to: 'user_company#create'
+  patch '/users/:username/invite_to_company', to: 'user_company#invite'
 
   resources :users, param: :_username
   post '/auth/login', to: 'authentication#login'
