@@ -1,4 +1,6 @@
 class CompanyDataController < ApplicationController
+  before_action :set_company_datum, only: %i[ show edit update destroy ]
+  before_action :authorize_request, except: :create
 
   def index
     @company_data = CompanyDatum.all
@@ -16,39 +18,17 @@ class CompanyDataController < ApplicationController
   def edit
   end
 
-  def create
-    @company_datum = CompanyDatum.new(company_datum_params)
-
-    respond_to do |format|
-      if @company_datum.save
-        format.html { redirect_to company_datum_url(@company_datum), notice: "Company datum was successfully created." }
-        format.json { render :show, status: :created, location: @company_datum }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @company_datum.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   def update
-    respond_to do |format|
-      if @company_datum.update(company_datum_params)
-        format.html { redirect_to company_datum_url(@company_datum), notice: "Company datum was successfully updated." }
-        format.json { render :show, status: :ok, location: @company_datum }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @company_datum.errors, status: :unprocessable_entity }
-      end
+    if @company_datum.update(company_datum_params)
+      render json: { status: :success }
+    else
+      render json: { status: :unprocessable_entity, msg: @company_datum.errors }
     end
   end
 
   def destroy
     @company_datum.destroy
-
-    respond_to do |format|
-      format.html { redirect_to company_data_url, notice: "Company datum was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    render json: { status: :success }
   end
 
   private
@@ -57,6 +37,6 @@ class CompanyDataController < ApplicationController
     end
 
     def company_datum_params
-      params.require(:company_datum).permit(:name, :description, :total_employee, :email, :location, :website)
+      params.permit(:name, :description, :total_employee, :email, :location, :website)
     end
 end
