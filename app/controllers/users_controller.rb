@@ -40,13 +40,13 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/{username}
-  def destroy
-    @username = @user.username
-    if @user.destroy
-      render json: { message: "successfully delete #{@username}" },
-             status: :ok
-    end
-  end
+  # def destroy
+  #   @username = @user.username
+  #   if @user.destroy
+  #     render json: { message: "successfully delete #{@username}" },
+  #            status: :ok
+  #   end
+  # end
 
   private
 
