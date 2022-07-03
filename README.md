@@ -48,7 +48,7 @@ https://whimsical.com/7VCnnpG5GWigqEm3VZWsg3
 
 ## github repository
 
-https://whimsical.com/7VCnnpG5GWigqEm3VZWsg3
+https://github.com/iqbal89co/jobsways
 
 # Usage
 
