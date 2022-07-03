@@ -245,6 +245,53 @@ download/view resume file in user data
 response with download/view file
 ```
 
+## USER COMPANY
+
+#### POST /users/company
+
+```ruby
+body {
+    name: "Cupcake Study"
+    description: "It is a long ..."
+    total_employee: 200
+    email: "cupcake@study.com"
+    location: "Indonesia"
+    website: "www.studywithcupcake.com"
+}
+response {
+    {
+        "message": "successfully created company",
+        "user": {
+            "company_id": 1,
+            "is_admin": 1,
+            "id": 1,
+            ...
+        },
+        "company": {
+            "id": 1,
+            "name": "Cupcake Study",
+            "description": "It is a long ....",
+            "total_employee": 200,
+            "email": "cupcake@study.com",
+            "location": "Indonesia",
+            "website": "www.studywithcupcake.com",
+            "created_at": "2022-07-03T13:36:01.713Z",
+            "updated_at": "2022-07-03T13:36:01.713Z"
+        }
+    }
+}
+```
+
+#### PATCH /users/:username/invite_to_company
+
+```ruby
+response {
+    {
+        "message": "Aflah12 successfully invited"
+    }
+}
+```
+
 ## COMPANY
 
 #### GET {{baseurl}}/companies
