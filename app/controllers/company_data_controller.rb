@@ -1,6 +1,6 @@
 class CompanyDataController < ApplicationController
-  before_action :set_company_datum, only: %i[ show edit update destroy ]
   before_action :authorize_request, except: :create
+  before_action :set_company_datum, only: %i[ show edit update destroy ]
 
   def index
     @company_data = CompanyDatum.all
@@ -33,7 +33,7 @@ class CompanyDataController < ApplicationController
 
   private
      def set_company_datum
-      @company_datum = CompanyDatum.find(params[:id])
+      @company_datum = CompanyDatum.find(@current_user.company_id)
     end
 
     def company_datum_params

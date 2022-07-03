@@ -1,7 +1,7 @@
 class Job < ApplicationRecord
+    belongs_to :company_datum
     has_many :job_applications
     has_many :user_data, through: :job_applications
-    belongs_to :company_datum
     validates :title, presence: true
     validates :position, presence: true
     validates :salary, presence: true

@@ -2,10 +2,6 @@ class UserCompanyController < ApplicationController
   before_action :authorize_request
   before_action :find_company, except: :create
 
-  def show
-    render :json => @company_datum, status: :ok
-  end
-
   def create
     @company_datum = CompanyDatum.new(company_params)
     if @company_datum.save
